@@ -1,0 +1,81 @@
+create table Students(
+	StudentID int primary key,
+    StudentName varchar(50),
+    City varchar(50)
+);
+
+
+Insert into Students
+Values
+(1001, 'Zubaer Ahmed','Dahaka'),
+(1002, 'Aftab Ahmed','Khulna'),
+(1003, 'Zunaed Ahmed','Dahaka'),
+(1004, 'Sjib Ahmed','Rajshahi'),
+(1005, 'Muminul ','Dahaka'),
+(1006, 'Ahmed','Ctg');
+
+Select * from Students;
+
+
+Create table Courses(
+CourseID int Primary Key,
+CourseName varchar(50)
+);
+
+Insert into Courses
+Values
+(101, 'Python'),
+(102, 'ML'),
+(103, 'AI'),
+(104, 'IoT');
+
+select * From Courses;
+
+
+
+create table Enrollments(
+	EnrID int primary key,
+    StudentID int,
+    CourseID int,
+    
+    
+    foreign key( StudentID)
+    references Students(StudentID),
+    
+	foreign key(CourseID)
+    references Courses(CourseID)
+);
+
+select * From Enrollments;
+
+Insert Into Enrollments
+Values
+(1,1001,101),
+(2,1002,102),
+(3,1003,103),
+(4,1004,104),
+(5,1005,101);
+
+
+
+select * From Enrollments;
+
+select 
+Students.StudentName,
+Courses.CourseName
+
+from Students Left join Enrollments
+
+on Students.StudentID=Enrollments.StudentID
+
+Left join Courses
+
+on Enrollments.CourseID=Courses.CourseID;
+
+
+
+
+
+
+
+
